@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:05:47 by abartell          #+#    #+#             */
-/*   Updated: 2022/12/13 11:14:58 by abartell         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:48:05 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "../ft_printf/ft_printf.h"
 
 # define SWAP 2
+# define R 0
+# define RR 1
 
 //*********************************************************//
 //**                STRUCTURES                          **//
@@ -37,6 +39,10 @@ typedef struct s_pswap
 
 void				sa_and_sb(t_pswap **lst, char stack);
 void				ss(t_pswap **a, t_pswap **b);
+void				swap_rotate(t_pswap **lst, int flag);
 
+//**** SWAPING.C ****//
+
+void				pa_and_pb(t_pswap **dst, t_pswap **src, char stack);
 
 #endif
