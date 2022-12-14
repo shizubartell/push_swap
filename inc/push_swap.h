@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:05:47 by abartell          #+#    #+#             */
-/*   Updated: 2022/12/13 19:48:05 by abartell         ###   ########.fr       */
+/*   Updated: 2022/12/14 22:19:08 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define SWAP 2
 # define R 0
 # define RR 1
+# define SORT -1
 
 //*********************************************************//
 //**                STRUCTURES                          **//
@@ -27,7 +28,7 @@ typedef struct s_pswap
 {
 	int				*val;
 	int				label;
-    struct s_pswap	*next;
+	struct s_pswap	*next;
 	struct s_pswap	*pre;
 }	t_pswap;
 
@@ -41,8 +42,19 @@ void				sa_and_sb(t_pswap **lst, char stack);
 void				ss(t_pswap **a, t_pswap **b);
 void				swap_rotate(t_pswap **lst, int flag);
 
-//**** SWAPING.C ****//
+//**** PUSHING.C ****//
 
 void				pa_and_pb(t_pswap **dst, t_pswap **src, char stack);
+
+//**** SORTING.C ****//
+
+void				sort_two(t_pswap **lst, char stack);
+void				sort_two_rev(t_pswap **lst, char stack);
+
+//**** LISTS.C ****//
+
+
+
+//**** ROTATING.C ****//
 
 #endif

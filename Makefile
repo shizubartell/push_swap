@@ -6,7 +6,7 @@
 #    By: abartell <abartell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/13 10:16:43 by abartell          #+#    #+#              #
-#    Updated: 2022/12/13 11:18:46 by abartell         ###   ########.fr        #
+#    Updated: 2022/12/14 22:21:25 by abartell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ LIBFT_A				:= 		libft.a
 INC					:=		inc/
 
 SRC_FILES			:=		push_swap.c pushing.c swaping.c \
-							
+							lists.c rotating.c sorting.c \
+							swap_push.c
 
 SRC					:=		${addprefix src/, ${SRC_FILES}}
 
