@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:05:47 by abartell          #+#    #+#             */
-/*   Updated: 2022/12/14 22:19:08 by abartell         ###   ########.fr       */
+/*   Updated: 2022/12/18 10:21:47 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,20 @@ void				pa_and_pb(t_pswap **dst, t_pswap **src, char stack);
 
 void				sort_two(t_pswap **lst, char stack);
 void				sort_two_rev(t_pswap **lst, char stack);
+void				sort_three(t_pswap **lst, char stack);
 
 //**** LISTS.C ****//
 
 
 
 //**** ROTATING.C ****//
+
+void				ra_rb(t_pswap **lst, char stack);
+void				rr(t_pswap **a, t_pswap **b);
+void				rra_rrb(t_pswap **lst, char stack);
+
+//**** PUSH_SWAP.C ****//
+
+void				push_swap(int argc, char *argv[]);
 
 #endif
