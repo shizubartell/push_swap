@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:05:58 by abartell          #+#    #+#             */
-/*   Updated: 2022/12/21 11:15:48 by abartell         ###   ########.fr       */
+/*   Updated: 2022/12/21 21:23:45 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	push_swap(int argc, char *argv[])
 
 	if (argc == 1)
 		return ;
-	stacka = dlstempty();
-	stackb = dlstempty();
-	dlstclear(&stacka);
-	dlstclear(&stackb);
+	stacka = slistempty();
+	stackb = slistempty();
+	slistclear(&stacka);
+	slistclear(&stackb);
     // adding successflag, adding args
     // using length of the input
 }
