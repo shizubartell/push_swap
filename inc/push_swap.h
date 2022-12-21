@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:05:47 by abartell          #+#    #+#             */
-/*   Updated: 2022/12/18 10:21:47 by abartell         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:13:18 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
 
+# define NOPE 0
+# define SUCCESS 1
 # define SWAP 2
 # define R 0
 # define RR 1
@@ -28,6 +30,7 @@ typedef struct s_pswap
 {
 	int				*val;
 	int				label;
+	int				index;
 	struct s_pswap	*next;
 	struct s_pswap	*pre;
 }	t_pswap;
