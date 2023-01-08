@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 11:15:39 by abartell          #+#    #+#             */
-/*   Updated: 2022/12/13 19:33:43 by abartell         ###   ########.fr       */
+/*   Updated: 2023/01/07 08:06:24 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // takes the first element of a/b at the top of
 // a/b and put it on b/a. Does nothing if its
 // empty
-void	pa_and_pb(t_pswap **dst, t_pswap **src, char stack)
+void	pa_pb(t_pswap **dst, t_pswap **src, char stack)
 {
 	if ((*src)->val == NULL)
 		return ;

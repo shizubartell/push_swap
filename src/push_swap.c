@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:05:58 by abartell          #+#    #+#             */
-/*   Updated: 2022/12/21 21:23:45 by abartell         ###   ########.fr       */
+/*   Updated: 2023/01/07 07:59:22 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,24 @@ void	push_swap(int argc, char *argv[])
 {
 	t_pswap	*stacka;
 	t_pswap	*stackb;
+	int		len;
+	int		flag;
 
 	if (argc == 1)
 		return ;
 	stacka = slistempty();
 	stackb = slistempty();
+	len = argc - 1;
+	flag = argchecker(len, argv, &stacka);
+	if (flag == SUCCESS)
+	{
+		index_setup(len, &stacka);
+		solution(len, &stacka, &stackb);
+	}
+	else
+		ft_putendl_fd("ERROR", 2);
 	slistclear(&stacka);
 	slistclear(&stackb);
-    // adding successflag, adding args
-    // using length of the input
 }
 
 // int      inputchecker
@@ -43,6 +52,64 @@ int	doubles(int n, t_pswap **a)
 		*a = (*a)->next;
 	}
 	*a = (*a)->next;
+	return (SUCCESS);
+}
+
+long long	to_int(const char *str)
+{
+	long long	number;
+	int			sign;
+
+	sign = 1;
+	if (*str == '+' && *(str + 1) != '\0')
+		str++;
+	else if (*str == '-' && *(str + 1) != '\0')
+	{
+		sign = -1;
+		str++;
+	}
+	if (*str == '\0')
+		return (NOT_INT);
+	number = 0;
+	while (*str != '\0')
+	{
+		if (!ft_isdigit(*str))
+			return (NOT_INT);
+		number *= 10;
+		number += (*str - '0');
+		if (!(number == INT_MAX + 1ll && sign == -1) && (INT_MAX < number))
+			return (NOT_INT);
+		str++;
+	}
+	return (number * sign);
+}
+
+int	argchecker(int len, char *argv[], t_pswap **a)
+{
+	long long	i;
+	long long	n;
+	int			flag;
+
+	i = 1;
+	while (i <= len)
+	{
+		n = to_int(argv[i]);
+		if (n == NOT_INT)
+			return (NOPE);
+		else
+		{
+			if (i == 1)
+				slistadd_front(a, slistnew((int)n));
+			else
+			{
+				flag = doubles((int)n, a);
+				if (flag == NOPE)
+					return (NOPE);
+				slistadd_back(a, slistnew((int)n));
+			}
+		}
+		i++;
+	}
 	return (SUCCESS);
 }
 

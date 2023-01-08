@@ -6,7 +6,7 @@
 #    By: abartell <abartell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/13 10:16:43 by abartell          #+#    #+#              #
-#    Updated: 2022/12/14 22:21:25 by abartell         ###   ########.fr        #
+#    Updated: 2023/01/08 20:38:35 by abartell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,21 +15,24 @@
 
 NAME				:=		push_swap
 
-CFLAGS				:=		-Wall - Wextra- Werror
+CFLAGS				:=		-Wall -Wextra -Werror
+CC					:=		gcc
 
 FT_PRINTF_DIR		:= 		ft_printf
 FT_PRINTF_A			:= 		./ft_printf/libftprintf.a
 
-LIBFT_DIR			:= 		libft
-LIBFT_A				:= 		libft.a
+INC					:=		-I ./inc/
 
-INC					:=		inc/
+SRC_DIR				:=		./src/
+OBJ_DIR				:=		./obj/
 
 SRC_FILES			:=		push_swap.c pushing.c swaping.c \
 							lists.c rotating.c sorting.c \
-							swap_push.c
+							swap_push.c main.c mechanics1.c
 
-SRC					:=		${addprefix src/, ${SRC_FILES}}
+OBJ_FILES			:=		${SRC_FILES:.c=.o}
+SRC					:=		$(addprefix $(SRC_DIR), $(SRC_FILES))
+OBJ					:=		$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
 RM					:= 		rm -rf
 
@@ -38,29 +41,29 @@ NR					:=		norminette -R CheckForbiddenSourceHeader
 # **************************************************************************** #
 # RULES
 
-all: ${NAME}
+all: ${OBJ_DIR} ${NAME}
 
-${NAME}:${OBJS}
-	echo "make $(FT_PRINTF_DIR)"
+${NAME}:${OBJ}
+	@echo "make $(FT_PRINTF_DIR)"
 	make -C $(FT_PRINTF_DIR)
-	echo "make $(LIBFT_DIR)"
-	make -C $(LIBFT_DIR)
-	${CC} ${CFLAGS} -I${INC} $(FT_PRINTF_A) $(LIBFT_A) -o $@ $^
+	${CC} ${OBJ} $(FT_PRINTF_A) -o ${NAME}
 	@echo "$(NAME) compiled and ready to be tested!"
 	@echo "Ready for swap_push or push_swap!"
 
-.c.o:
-	${CC} ${CFLAGS} -I${INC} -c $< -o $@
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir $(OBJ_DIR)
 
 clean:
 	${RM} ${OBJS}
 	make fclean -C $(FT_PRINTF_DIR)
-	make fclean -C $(LIBFT_DIR)
 
 fclean: clean
 	${RM} ${NAME}
+	$(RM) $(OBJ_DIR)
 	make fclean -C $(FT_PRINTF_DIR)
-	make fclean -C $(LIBFT_DIR)
 	@echo "Everything cleaned up for $(NAME)!"
 
 re: fclean all
