@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:05:58 by abartell          #+#    #+#             */
-/*   Updated: 2023/01/07 07:59:22 by abartell         ###   ########.fr       */
+/*   Updated: 2023/01/08 22:35:32 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,16 @@ long long	to_int(const char *str)
 		str++;
 	}
 	if (*str == '\0')
-		return (NOT_INT);
+		return (INT_MAX);
 	number = 0;
 	while (*str != '\0')
 	{
 		if (!ft_isdigit(*str))
-			return (NOT_INT);
+			return (INT_MAX);
 		number *= 10;
 		number += (*str - '0');
 		if (!(number == INT_MAX + 1ll && sign == -1) && (INT_MAX < number))
-			return (NOT_INT);
+			return (INT_MAX);
 		str++;
 	}
 	return (number * sign);
@@ -94,7 +94,7 @@ int	argchecker(int len, char *argv[], t_pswap **a)
 	while (i <= len)
 	{
 		n = to_int(argv[i]);
-		if (n == NOT_INT)
+		if (n == INT_MAX)
 			return (NOPE);
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: abartell <abartell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 19:49:52 by abartell          #+#    #+#             */
-/*   Updated: 2022/12/29 09:24:13 by abartell         ###   ########.fr       */
+/*   Updated: 2023/01/10 19:56:02 by abartell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	slistadd_back(t_pswap **lst, t_pswap *new)
 	}
 }
 
-t_pswap *slistempty(void)
+t_pswap	*slistempty(void)
 {
-    t_pswap	*empty;
+	t_pswap	*empty;
 
 	empty = malloc(sizeof(t_pswap));
 	if (empty == NULL)
@@ -82,7 +82,7 @@ t_pswap	*slistnew(int value)
 
 void	slistclear(t_pswap **lst)
 {
-    t_pswap	*temp;
+	t_pswap	*temp;
 
 	while ((*lst)->val != NULL)
 	{
